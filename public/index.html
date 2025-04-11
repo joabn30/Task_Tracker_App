@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Task Tracking App</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="todo-app">
+        <h1>Task Tracking App <img src="images/icon.png"></h1>
+
+        <h2>Enter a task: </h2>
+        <div class="row">
+          <input type="text" id="input-box" placeholder="Task name">
+        </div>
+
+        <h3>Enter the description of the Task:</h3>
+        <div class="row">
+          <input type="text" id="description-box" placeholder="Task description">
+        </div>
+
+       
+
+        <button onclick="AddTask()">Add</button>
+        <button onclick="UpdateTask()">Update</button>
+        <button onclick="DeleteTask()">Delete</button>
+        
+        <ul id="list-container"></ul>
+
+
+      </div>
+    </div>
+    <script src="script.js"></script>
+
+    </body>
+    ></html>
