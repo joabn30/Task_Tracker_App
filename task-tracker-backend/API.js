@@ -1,51 +1,3 @@
-/*const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const path = require('path');
-
-const app = express();
-const PORT = 3000;
-
-app.use(cors());
-app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'public')));
-
-let tasks = [];
-let currentId = 1;
-
-app.get('/tasks', (req, res) => {
-  res.json(tasks);
-});
-
-app.post('/tasks', (req, res) => {
-  const { name, description } = req.body;
-  if (!name || !description) {
-    return res.status(400).json({ error: "Both name and description are required" });
-  }
-  const newTask = { id: currentId++, name, description };
-  tasks.push(newTask);
-  res.status(201).json(newTask);
-});
-
-app.patch('/tasks/:id', (req, res) => {
-  const id = parseInt(req.params.id);
-  const { name, description } = req.body;
-  const task = tasks.find(t => t.id === id);
-  if (!task) return res.status(404).json({ error: "Task not found" });
-  if (name) task.name = name;
-  if (description) task.description = description;
-  res.json(task);
-});
-
-app.delete('/tasks/:id', (req, res) => {
-  const id = parseInt(req.params.id);
-  tasks = tasks.filter(t => t.id !== id);
-  res.status(204).send();
-});
-
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});*/
 
 // Import required modules
 const express = require('express');
@@ -70,6 +22,7 @@ let currentId = 1;
  * GET /tasks
  * Returns a list of all tasks as JSON.
  */
+
 app.get('/tasks', (req, res) => {
   res.json(tasks);
 });
@@ -80,15 +33,17 @@ app.get('/tasks', (req, res) => {
  * Expects a JSON body with 'name' and 'description'.
  * Returns the created task with a unique ID.
  */
+
 app.post('/tasks', (req, res) => {
   const { name, description } = req.body;
   if (!name || !description) {
     return res.status(400).json({ error: "Both name and description are required" });
   }
-  const newTask = { id: currentId++, name, description };
+  const newTask = { id: currentId++, name, description, status: "Pending" }; // Added status
   tasks.push(newTask);
   res.status(201).json(newTask);
 });
+
 
 /**
  * PATCH /tasks/:id
@@ -98,13 +53,17 @@ app.post('/tasks', (req, res) => {
  */
 app.patch('/tasks/:id', (req, res) => {
   const id = parseInt(req.params.id);
-  const { name, description } = req.body;
+  const { name, description, status } = req.body; // Include status
   const task = tasks.find(t => t.id === id);
   if (!task) return res.status(404).json({ error: "Task not found" });
+
   if (name) task.name = name;
   if (description) task.description = description;
+  if (status) task.status = status; // Apply status update
+
   res.json(task);
 });
+
 
 /**
  * DELETE /tasks/:id

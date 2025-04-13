@@ -1,19 +1,21 @@
 
-* {
+   * {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
   }
   
+  /*  Main App Container */
   .container {
     width: 100%;
     min-height: 100vh;
-    background: linear-gradient(135deg, #153677, #4e085f);
+    background: linear-gradient(135deg, #153677, #4e085f); /* Gradient background */
     padding: 10px;
   }
   
-  .todo-app {
+  /*Task Application Box */
+  .task-app {
     width: 100%;
     max-width: 540px;
     background: #fff;
@@ -22,20 +24,23 @@
     border-radius: 10px;
   }
   
-  .todo-app h1 {
+  /* App title styling */
+  .task-app h1 {
     color: #002765;
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
-    text-align: center;
     justify-content: center;
+    text-align: center;
+    margin-bottom: 20px;
   }
   
-  .todo-app h1 img {
+  /* Icon next to the title */
+  .task-app h1 img {
     width: 30px;
     margin-left: 10px;
   }
   
+  /* Input Rows (Task Name and Description)*/
   .row {
     display: flex;
     align-items: center;
@@ -46,6 +51,7 @@
     margin-bottom: 15px;
   }
   
+  /* Input field styling */
   input {
     flex: 1;
     border: none;
@@ -55,6 +61,7 @@
     font-size: 14px;
   }
   
+  /* Action Buttons (Add, Update, Delete) */
   button {
     border: none;
     outline: none;
@@ -67,18 +74,26 @@
     margin: 10px 0;
   }
   
-  ul li {
-    list-style: none;
-    font-size: 17px;
-    padding: 12px 8px 12px 50px;
-    user-select: none;
-    cursor: pointer;
-    position: relative;
-    background: #f9f9f9;
-    border-radius: 5px;
-    margin-bottom: 10px;
+  /*Task List Styling */
+  ul {
+    padding: 0;
+    margin: 0;
   }
   
+  /* Each task list item */
+  ul li {
+    position: relative;
+    list-style: none;
+    font-size: 17px;
+    padding: 12px 16px 12px 50px; /* Space for checkbox */
+    background: #f9f9f9;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    user-select: none;
+    cursor: pointer;
+  }
+  
+  /* Checkbox Circles for Task Selection */
   ul li::before {
     content: '';
     position: absolute;
@@ -88,36 +103,85 @@
     background-image: url("images/unchecked.png");
     background-size: cover;
     background-position: center;
-    top: 12px;
-    left: 8px;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
   }
   
+  /* When task is marked as selected */
   ul li.checked {
     color: #555;
-   /* text-decoration: line-through;*/
   }
   
   ul li.checked::before {
     background-image: url("images/checked.png");
   }
   
-  ul li span {
-    position: absolute;
-    right: 0;
-    top: 5px;
+  /* Highlight task when selected (for updating/deleting) */
+  ul li.selected {
+    background-color: #e4e4e4;
+  }
+  
+  /*Task Content Styling */
+  .task-content {
+    display: inline-block;
+    max-width: 60%;
+    word-break: break-word;
+    vertical-align: middle;
+    font-size: 15px;
+  }
+  
+  
+  /* Group container for tickmark "✔" and delete "×" */
+  .button-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  /*"✔" Tickmark button styling */
+  .tickmark-btn {
+    background: #ff5945;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 8px 12px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .tickmark-btn:hover {
+    background: #e0483a;
+  }
+  
+  /* "×" Delete button styling */
+  .delete-btn {
     width: 40px;
     height: 40px;
     font-size: 22px;
+    background: none;
+    border: none;
     color: #555;
-    line-height: 40px;
-    text-align: center;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 50%;
+    line-height: 1;
+    padding: 0;
   }
   
-  ul li span:hover {
+  .delete-btn:hover {
     background: #edeef0;
   }
-
-  h2,h3{
-    font-size:medium;
+  
+  /* Headings */
+  h2, h3 {
+    font-size: medium;
   }
+  
