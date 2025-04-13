@@ -1,6 +1,6 @@
 This Task Tracking App is a simple and interactive User Interface (UI) that allows users to manage their tasks efficiently. Users can create tasks by entering a task name along with a description, view their task list, update existing tasks, mark them as Pending or Completed, and delete them when finished.
 
-The app leverages a RESTful API built with Node.js to perform full CRUD operations — including POST, GET, PATCH, and DELETE. This API serves as the bridge between the frontend and backend, handling data persistence and updates dynamically.
+The app leverages a REST API built with Node.js to perform full CRUD operations — including POST, GET, PATCH, and DELETE. This API serves as the bridge between the frontend and backend, handling data persistence and updates dynamically.
 
 Setup Instruction:
 1.) Backend (Node.js API): Ensure Node.js is installed.Download from nodejs.org if needed.
